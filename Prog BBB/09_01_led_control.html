@@ -1,0 +1,21 @@
+<html>
+<head>
+    <script src = "/socket.io/socket.io.js" > </script>
+    <script>
+    var socket = io.connect();
+    function ledOn(){
+        socket.emit('digitalWrite', '{"pin":"USR3", "value":1}');
+    }
+    function ledOff(){
+        socket.emit('digitalWrite', '{"pin":"USR3", "value":0}');
+    }
+    </script>
+</head> 
+ 
+<body>
+    <h1 style="font-size:60pt;">LED USR3</h1>
+    <a href="" onClick="ledOn();" style="font-size:32pt;">ON</a>
+    &nbsp;&nbsp;&nbsp;
+    <a href="" onClick="ledOff();" style="font-size:32pt;">OFF</a>
+</body>
+</html>

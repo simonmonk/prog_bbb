@@ -1,0 +1,78 @@
+<html>
+<head>
+    <script src = "/socket.io/socket.io.js" > </script>
+    <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"> </script>
+    <script>
+    var socket = io.connect();
+    function updateSlider(value){
+        socket.emit('analogWrite', '{"pin":"P9_14", "value":' + value / 100 + '}');
+    }
+    </script>
+    <style>
+/* slider root element */
+.slider {
+    background:#3C72E6 url(/media/img/gradient/h30.png) repeat-x 0 0;
+    height:9px;
+    position:relative;
+    cursor:pointer;
+    border:1px solid #333;
+    width:675px;
+    float:left;
+    clear:right;
+    margin-top:10px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    -moz-box-shadow:inset 0 0 8px #000;
+}
+
+/* progress bar (enabled with progress: true) */
+.progress {
+    height:9px;
+    background-color:#C5FF00;
+    display:none;
+    opacity:0.6;
+}
+
+/* drag handle */
+.handle {
+    background:#fff url(/media/img/gradient/h30.png) repeat-x 0 0;
+    height:28px;
+    width:28px;
+    top:-12px;
+    position:absolute;
+    display:block;
+    margin-top:1px;
+    border:1px solid #000;
+    cursor:move;
+    -moz-box-shadow:0 0 6px #000;
+    -webkit-box-shadow:0 0 6px #000;
+    -moz-border-radius:14px;
+    -webkit-border-radius:14px;
+
+}
+
+/* the input field */
+.range {
+    border:1px inset #ddd;
+    float:left;
+    font-size:20px;
+    margin:0 0 0 15px;
+    padding:3px 0;
+    text-align:center;
+    width:50px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+}
+    </style>
+</head> 
+ 
+<body>
+    <h1 style="font-size:60pt;">PWM Fancy</h1>
+    <input type="range" min="0" max="100" step="1" value="50"
+ onchange="updateSlider(this.value)"/>
+
+    <script>
+    $(":range").rangeinput();
+    </script>
+</body>
+</html>

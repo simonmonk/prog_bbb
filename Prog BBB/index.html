@@ -1,0 +1,33 @@
+<html>
+<head>
+    <script src = "/socket.io/socket.io.js" > </script>
+    <script type=text/javascript src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script>
+        var socket = io.connect();
+        socket.on('P9_36', function (value) {
+            $("#reading").html(value);
+        });
+        setInterval(getReading, 500);
+        function getReading() {
+            socket.emit('analog_read', 'P9_36');
+        }
+    function ledOn(){
+        socket.emit('digitalWrite', '{"pin":"USR3", "value":1}');
+    }
+    function ledOff(){
+        socket.emit('digitalWrite', '{"pin":"USR3", "value":0}');
+    }
+    function ledOnForSeconds(duration){
+        message = {"pin":"USR3", "duration":duration};
+        socket.emit('ledOnForSeconds', JSON.stringify(message));
+    }
+    </script>
+</head> 
+ 
+<body>
+    <input type="button" value="on" onClick="ledOn();">
+    <input type="button" value="off" onClick="ledOff();">
+    <input type="button" value="on for 30 seconds" onClick="ledOnForSeconds(30000);">
+    <div id='reading'></div>
+</body>
+</html>

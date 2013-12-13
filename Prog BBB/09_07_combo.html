@@ -1,0 +1,40 @@
+<html>
+<head>
+    <script src = "/socket.io/socket.io.js" > </script>
+    <script type=text/javascript src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script>
+    var socket = io.connect();
+    socket.on("pinUpdate", handlePinUpdate);
+    function ledOn(){
+        socket.emit('digitalWrite', '{"pin":"P9_14", "value":1}');
+    }
+    function ledOff(){
+        socket.emit('digitalWrite', '{"pin":"P9_14", "value":0}');
+    }
+    function tempFromMessage(data) {
+        var millivolts = data.value * 1800;
+        var tempC = (millivolts - 500) / 10;
+        var tempF = (tempC * 9/5) + 32;
+        return tempF;
+    }
+    function handlePinUpdate(message) {
+        var data = JSON.parse(message);
+        var field = "#" + data.pin;
+        $(field).html(" " + tempFromMessage(data) + " F");
+    }
+    socket.emit('monitor', "P9_39");
+    socket.emit('monitor', "P9_37");    
+    </script>
+</head> 
+ 
+<body>
+    <h1 style="font-size:60pt;">Combo</h1>
+    <a href="" onClick="ledOn();" style="font-size:32pt;">ON</a>
+    &nbsp;&nbsp;&nbsp;
+    <a href="" onClick="ledOff();" style="font-size:32pt;">OFF</a>
+    
+    <h2 style="font-size:40pt;"id="P9_39">-</h2>
+    <h2 style="font-size:40pt;"id="P9_37">-</h2>
+        
+</body>
+</html>

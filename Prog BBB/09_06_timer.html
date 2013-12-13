@@ -1,0 +1,26 @@
+<html>
+<head>
+    <script src = "/socket.io/socket.io.js" > </script>
+    <script type=text/javascript src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script>
+    var socket = io.connect();
+    function startTimer(){
+        var duration = $("#duration").val();
+        socket.emit('startTimer', duration);
+    }
+    function cancelTimer(){
+        socket.emit('cancelTimer');
+    }
+    </script>
+</head> 
+ 
+<body>
+    <h1 style="font-size:60pt;">Timer</h1>
+    <p style="font-size:32pt;">Time in seconds: 
+      <input id="duration" type="text" size="3" value="10" style="font-size:32pt;"/>
+    </p>
+    <a href="" onClick="startTimer();" style="font-size:32pt;">Start</a>
+    &nbsp;&nbsp;&nbsp;
+    <a href="" onClick="cancelTimer();" style="font-size:32pt;">Cancel</a>
+</body>
+</html>

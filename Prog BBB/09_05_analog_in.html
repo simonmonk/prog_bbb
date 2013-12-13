@@ -1,0 +1,25 @@
+<html>
+<head>
+    <script src = "/socket.io/socket.io.js" > </script>
+    <script type=text/javascript src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script>
+        var pin = 'P9_39'; 
+        var socket = io.connect();
+        socket.on("pinUpdate", handlePinUpdate);
+        function handlePinUpdate(message) {
+            var data = JSON.parse(message);
+            var millivolts = data.value * 1800;
+            var tempC = (millivolts - 500) / 10;
+            var tempF = (tempC * 9/5) + 32;
+           //$("#temp").html(" " + tempC + " C");
+           $("#temp").html(" " + tempF + " F");
+        }
+        socket.emit('monitor', pin);
+    </script>
+</head> 
+ 
+<body>
+    <h1 style="font-size:60pt;">Temperature</h1>
+    <h2 style="font-size:40pt;"id="temp">-</h2>
+</body>
+</html>

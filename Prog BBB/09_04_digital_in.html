@@ -1,0 +1,21 @@
+<html>
+<head>
+    <script src = "/socket.io/socket.io.js" > </script>
+    <script type=text/javascript src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script>
+        var pin = 'P9_11'; 
+        var socket = io.connect();
+        socket.on("pinUpdate", handlePinUpdate);
+        function handlePinUpdate(message) {
+           var data = JSON.parse(message);
+           $("#switchStatus").html("pin " + data.pin + " value " + data.value);
+        }
+        socket.emit('monitor', pin);
+    </script>
+</head> 
+ 
+<body>
+    <h1 style="font-size:60pt;">Switch</h1>
+    <h2 style="font-size:40pt;"id="switchStatus">-</h2>
+</body>
+</html>
