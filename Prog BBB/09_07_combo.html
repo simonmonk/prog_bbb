@@ -22,8 +22,7 @@
         var field = "#" + data.pin;
         $(field).html(" " + tempFromMessage(data) + " F");
     }
-    socket.emit('monitor', "P9_39");
-    socket.emit('monitor', "P9_37");    
+    socket.emit('monitor', "P9_39"); 
     </script>
 </head> 
  
@@ -34,7 +33,6 @@
     <a href="" onClick="ledOff();" style="font-size:32pt;">OFF</a>
     
     <h2 style="font-size:40pt;"id="P9_39">-</h2>
-    <h2 style="font-size:40pt;"id="P9_37">-</h2>
         
 </body>
 </html>
