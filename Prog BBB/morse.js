@@ -55,20 +55,20 @@ function flash(period)
 }
 
 exports.flashMessage = function(message) {
-	var timeline = 0;
+    var timeline = 0;
     for (var i = 0; i < message.length; i++) {
         if (message[i] == '.') {
-		    setTimeout(function() { flash(dot); }, timeline);
-		    timeline = timeline+  dot + gap;
+            setTimeout(function() { flash(dot); }, timeline);
+            timeline = timeline+  dot + gap;
         }
         else if (message[i] == '-') {
-    	    setTimeout(function() { flash(dash); }, timeline);
-		    timeline = timeline + dash + gap;
+            setTimeout(function() { flash(dash); }, timeline);
+            timeline = timeline + dash + gap;
         }
         else if (message[i] == ' ') {
-		    timeline = timeline +  dot + gap;
+            timeline = timeline +  dot + gap;
         }
-	}
+    }
 }
 
 exports.flashText = function(text) {

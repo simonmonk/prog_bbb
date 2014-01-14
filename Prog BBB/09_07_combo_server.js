@@ -14,23 +14,23 @@ app.listen(8080);
 function handler(req, res) {
     fs.readFile(htmlPage, function(err, data) {
         if (err) {
-			res.writeHead(500);
-			return res.end('Error loading file: ' + htmlPage);
-		}
-		res.writeHead(200);
-		res.end(data);
-	});
+            res.writeHead(500);
+            return res.end('Error loading file: ' + htmlPage);
+        }
+        res.writeHead(200);
+        res.end(data);
+    });
 }
 
 function onConnect(socket) {
     socket.on('digitalWrite', handleDigitalWrite);
     socket.on('monitor', handleMonitorRequest);
-	soc = socket;
+    soc = socket;
 }
 
 function handleMonitorRequest(pin) {
-	// console.log("got request to monitor pin:" + pin);
-	pinStates[pin] = 0;
+    // console.log("got request to monitor pin:" + pin);
+    pinStates[pin] = 0;
 }
 
 function handleDigitalWrite(message) {
@@ -41,15 +41,15 @@ function handleDigitalWrite(message) {
 }
 
 function checkInputs() {
-	for (var pin in pinStates) {
-		var oldValue = pinStates[pin];
-		var newValue = bb.analogRead(pin);
+    for (var pin in pinStates) {
+        var oldValue = pinStates[pin];
+        var newValue = bb.analogRead(pin);
         console.log("new=" + newValue);
-		if (oldValue != newValue) {
-			soc.emit("pinUpdate", '{"pin":"' + pin + '", "value":' + newValue + '}');
-			pinStates[pin] = newValue;
-		}
-	}
+        if (oldValue != newValue) {
+            soc.emit("pinUpdate", '{"pin":"' + pin + '", "value":' + newValue + '}');
+            pinStates[pin] = newValue;
+        }
+    }
 }
 
 io.sockets.on('connection', onConnect);

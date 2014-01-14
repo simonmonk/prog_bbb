@@ -20,16 +20,16 @@ function ledsOff() {
 
 function flash(period) {
     ledsOn();
-	setTimeout(ledsOff, period);
+    setTimeout(ledsOff, period);
 }
 
 function flashMessage(durations) {
-	var timeline = 0;
+    var timeline = 0;
     for (var i = 0; i < durations.length; i++) {
         var d = durations[i];
-		setTimeout(function() { flash(d); }, timeline);
-		timeline = timeline + d + gap;
-	}
+        setTimeout(function() { flash(d); }, timeline);
+        timeline = timeline + d + gap;
+    }
 }
 
 flashMessage([ dot, dot, dot, dash, dash, dash, dot, dot, dot]);
