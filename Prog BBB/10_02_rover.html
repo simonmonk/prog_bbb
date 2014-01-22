@@ -1,0 +1,22 @@
+<html>
+<head>
+    <script src = "/socket.io/socket.io.js" > </script>
+    <script>
+    var socket = io.connect();
+    </script>
+</head> 
+ 
+<body>
+    <h1 style="font-size:60pt;">Rover</h1>
+    
+    <table>
+    <tr><td></td><td onClick="socket.emit('forwards');" style="font-size:32pt;">^</td><td></td></tr>
+    <tr><td onClick="socket.emit('left');" style="font-size:32pt;">&lt;</td>
+        <td onClick="socket.emit('stop');" style="font-size:32pt;">S</td>
+        <td onClick="socket.emit('right');" style="font-size:32pt;">&gt;</td>
+    </tr>
+    <tr><td></td><td onClick="socket.emit('backwards');" style="font-size:32pt;">v</td><td></td></tr>
+    </table>
+    
+</body>
+</html>

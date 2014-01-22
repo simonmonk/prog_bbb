@@ -12,7 +12,7 @@ function loop() {
 
 function setSpeed(reading) {
     var dutyCycle = reading.value;
-    b.analogWrite(outputPin, dutyCycle); 
+    b.analogWrite(outputPin, dutyCycle, 50); 
 }
 
 setInterval(loop, 50);
