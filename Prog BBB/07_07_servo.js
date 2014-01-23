@@ -5,7 +5,7 @@ var servoPin = "P9_14";
 var potPin = "P9_33";
 var minDuty = 0.03;
 
-b.pinMode(servoPin, b.OUTPUT);
+//b.pinMode(servoPin, b.OUTPUT);
 
 function loop() {
     b.analogRead(potPin, setAngle);

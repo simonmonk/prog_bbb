@@ -8,18 +8,18 @@ var fs = require('fs');
 var htmlPage = 'Prog BBB/10_02_rover.html';
 
 var pwmPinA = "P9_14";
-var in1PinA = "P8_20";
-var in2PinA = "P8_18";
-var pwmPinB = "P8_16";
-var in1PinB = "P8_22";
-var in2PinA = "P8_24";
+var in1PinA = "P9_23";
+var in2PinA = "P9_21";
+var pwmPinB = "P9_16";
+var in1PinB = "P9_22";
+var in2PinB = "P9_24";
 
-b.pinMode(pwmPinA, b.OUTPUT);
+//b.pinMode(pwmPinA, b.OUTPUT);
 b.pinMode(in1PinA, b.OUTPUT);
 b.pinMode(in2PinA, b.OUTPUT);
-b.pinMode(pwmPinB, b.OUTPUT);
+//b.pinMode(pwmPinB, b.OUTPUT);
 b.pinMode(in1PinB, b.OUTPUT);
-b.pinMode(in2PinA, b.OUTPUT);
+b.pinMode(in2PinB, b.OUTPUT);
 
 app.listen(8080);
  
@@ -72,5 +72,7 @@ function stop() {
     setPins(0, 0, 0, 0, 0, 0);
 }
 
+io.sockets.on('connection', onConnect);
 
+b.digitalWrite("P9_20", 0);
 

@@ -9,7 +9,7 @@ var step = 0.05;
 
 b.pinMode(sw1, b.INPUT);
 b.pinMode(sw2, b.INPUT);
-b.pinMode(led, b.OUTPUT);
+//b.pinMode(led, b.OUTPUT);
 
 var duty = 0.5;
 
