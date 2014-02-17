@@ -27,7 +27,6 @@ function onConnect(socket) {
 
 function handleAnalogWrite(message) {
     var data = JSON.parse(message);
-    //bb.pinMode(data.pin, bb.OUTPUT);
     bb.analogWrite(data.pin, data.value);
 }
    
