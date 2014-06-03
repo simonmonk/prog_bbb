@@ -5,9 +5,10 @@ var io = require('socket.io').listen(app);
 var fs = require('fs');
 var bb = require('bonescript');
 
-var htmlPage = 'Prog BBB/09_02_pwm.html';
+var htmlPage = 'Prog BBB/09_02_pwm.html'; // use this for Angstrom
+// var htmlPage = '09_02_pwm.html'; // use this for Debian
  
-app.listen(8080);
+app.listen(8085);
  
 function handler (req, res) {
   fs.readFile(htmlPage,

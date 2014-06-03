@@ -6,7 +6,6 @@ var ain1Pin = "P8_17";
 var ain2Pin = "P8_15";
 var potPin = "P9_33";
 
-//b.pinMode(pwmPin, b.OUTPUT);
 b.pinMode(ain1Pin, b.OUTPUT);
 b.pinMode(ain2Pin, b.OUTPUT);
 

@@ -5,12 +5,14 @@ var io = require('socket.io').listen(app);
 var fs = require('fs');
 var bb = require('bonescript');
 
-var htmlPage = 'Prog BBB/09_06_timer.html';
+var htmlPage = 'Prog BBB/09_06_timer.html'; // Angstrom
+// var htmlPage = '09_06_timer.html'; // Debian
+
 var cancelTimer;
 var pin = "P9_14";
 bb.pinMode(pin, bb.OUTPUT);
  
-app.listen(8080);
+app.listen(8085);
  
 function handler (req, res) {
   fs.readFile(htmlPage,

@@ -6,10 +6,6 @@ var ledRed = "P9_14";
 var ledGreen = "P8_13";
 var ledBlue = "P8_19";
 
-// b.pinMode(ledRed, b.OUTPUT);
-// b.pinMode(ledGreen, b.OUTPUT);
-// b.pinMode(ledBlue, b.OUTPUT);
-
 var red = 0.5;
 var green = 0.5;
 var blue = 0.5;

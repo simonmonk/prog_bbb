@@ -5,7 +5,9 @@ var app = require('http').createServer(handler);
 var io = require('socket.io').listen(app);
 var fs = require('fs');
 
-var htmlPage = 'Prog BBB/10_02_rover.html';
+var htmlPage = 'Prog BBB/10_02_rover.html'; // Angstrom
+// var htmlPage = 'Prog BBB/10_02_rover.html'; // Debian
+
 
 var pwmPinA = "P9_14";
 var in1PinA = "P9_23";
@@ -21,7 +23,7 @@ b.pinMode(in2PinA, b.OUTPUT);
 b.pinMode(in1PinB, b.OUTPUT);
 b.pinMode(in2PinB, b.OUTPUT);
 
-app.listen(8080);
+app.listen(8085);
  
 function handler (req, res) {
   fs.readFile(htmlPage,

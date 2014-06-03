@@ -4,12 +4,14 @@ var io = require('socket.io').listen(app);
 var fs = require('fs');
 var bb = require('bonescript');
 
-var htmlPage = 'Prog BBB/09_07_combo.html';
+var htmlPage = 'Prog BBB/09_07_combo.html'; // Angstrom
+// var htmlPage = '09_07_combo.html'; // Debian
+
 
 var pinStates = {};
 var soc;
 
-app.listen(8080);
+app.listen(8085);
 
 function handler(req, res) {
     fs.readFile(htmlPage, function(err, data) {
