@@ -6,7 +6,7 @@ var io = require('socket.io').listen(app);
 var fs = require('fs');
 
 var htmlPage = 'Prog BBB/10_02_rover.html'; // Angstrom
-// var htmlPage = 'Prog BBB/10_02_rover.html'; // Debian
+// var htmlPage = '10_02_rover.html'; // Debian
 
 
 var pwmPinA = "P9_14";
